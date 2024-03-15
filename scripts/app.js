@@ -212,6 +212,7 @@
         let messageArea = $("#messageArea");
         messageArea.hide();
         $("#loginButton").on("click", function () {
+            console.log("call click");
             let success = false;
             let newUser = new core.User();
             $.get("./data/users.json", function (data) {
@@ -219,7 +220,9 @@
                     console.log(user);
                     let username = document.forms[0].username.value;
                     let password = document.forms[0].password.value;
-                    if (username === user.Username && password === user.Password) {
+                    console.log("Entered credentials:", username, password);
+                    if (username === user.UserName && password === user.Password) {
+                        console.log("Login successful for user:", user);
                         success = true;
                         newUser.fromJSON(user);
                         break;
@@ -283,7 +286,7 @@
     function LoadContent() {
         let page_name = router.ActiveLink;
         let callback = ActiveLinkCallBack();
-        $.get(`./views/content/${page_name}.HTML`, function (html_data) {
+        $.get(`./views/content/${page_name}.html`, function (html_data) {
             $("main").html(html_data);
             CheckLogin();
             callback();

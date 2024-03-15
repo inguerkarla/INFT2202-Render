@@ -2,8 +2,8 @@
   "users": [
     {
       "DisplayName": "Bilbo Baggins",
-      "EmailAddress": "bbagins@example.com",
-      "UserName": "bbagins",
+      "EmailAddress": "bbaggins@example.com",
+      "UserName": "bbaggins",
       "Password": "123456"
     },
 
