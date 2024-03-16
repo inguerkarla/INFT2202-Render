@@ -84,7 +84,7 @@
         let protected_route= ["contact-list"];
 
         if(protected_route.indexOf(router.ActiveLink)>-1) {
-            if (sessionStorage.getItem("user")) {
+            if (!sessionStorage.getItem("user")) {
                 router.ActiveLink= "login";
 
             }
@@ -101,7 +101,7 @@
         $("#logout").on("click", function (){
             sessionStorage.clear();
 
-            $("#login").html('<a class="nav-link" data="login"><i class="fas fa-sign-out-alt"></i> Logout</a>')
+            $("#login").html('<a class="nav-link" data="login"><i class="fas fa-sign-out-alt"></i> Login</a>')
 
             AddNavigationEvents();
             LoadLink("login");
