@@ -1,42 +1,39 @@
 "use strict";
 
-import  http from 'http';
+import http from 'http';
 import fs from 'fs';
 import mime from 'mime-types';
 
 let lookup = mime.lookup;
 const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res)=>{
+const server = http.createServer((req, res) => {
     let path = req.url as string;
 
-    if(path === "/" || path ==="/home") {
+    if (path === "/" || path === "/home") {
         path = "/index.html";
     }
 
-        let mime_type = lookup(path.substring(1));
+    let mime_type = lookup(path.substring(1));
 
-        fs.readFile(__dirname + path, function (err, data) {
+    fs.readFile(__dirname + path, function (err, data) {
 
-            if (err) {
-                res.writeHead(404);
-                res.end("Error 404 - File Not Found" + err.message);
-                return;
-            }
-            if (!mime_type) {
-                mime_type = "text/plain";
-            }
+        if (err) {
+            res.writeHead(404);
+            res.end("Error 404 - File Not Found" + err.message);
+            return;
+        }
+        if (!mime_type) {
+            mime_type = "text/plain";
+        }
 
-            res.setHeader("x-content-Type-Option", "nosniff");
-            res.writeHead(200, {'content-type': mime_type});
-            res.end(data);
-        });
+        res.setHeader("x-content-Type-Option", "nosniff");
+        res.writeHead(200, {'content-type': mime_type});
+        res.end(data);
+    });
+});
 
-
-        });
-
-    server.listen(port, ()=>{
-        console.log(`server running at http://localhost:${port}/`);
-
+server.listen(port, () => {
+    console.log(`server running at http://localhost:${port}/`);
 })
 

@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Community Picnic",
+    "date": "2024-05-15",
+    "location": "Oshawa Valley Botanical Gardens",
+    "time":"1:00 pm",
+    "description": "We're excited to invite you to our annual Community Picnic, a delightful event designed to bring neighbors together for a day of outdoor fun and camaraderie.Enjoy the serene beauty of Oshawa Valley Botanical Gardens as we gather under the open sky for a leisurely day of connection and relaxation."
+  },
+  {
+    "title": "Community Movie Night",
+    "date": "Mondays",
+    "location": "Harmony Hub",
+    "time":"7:10 pm -10:00pm",
+    "description": "Outside of the Harmony Hub memebers will set up an outdoor screen very Monday to  host a movie night.Movies are family-friendly films chosen by the comunity. Popcorn and blankets are provided from the local store for all attendees."
+  },
+  {
+    "title": "Pet Adoption Day",
+    "date": "2024-07-15",
+    "time":"11:00am - 2:00pm",
+    "location": "Harmony Hub",
+    "description": "Looking to make a fun addtion into your family. The Oshawa Humane Soceity will be coming to Harmony Hub to with many local fur babies are looking for there forever home. Adopting a pet is a rewarding experience that changes lives for both you and your new furry friend. If you're ready to take the plunge, simply visitour Pet Adoption Day event and speak with our adoption counselors to start the process"
+  },
+  {
+    "title": "CSS Course",
+    "date": "Every day",
+    "time":"11.59:00 pm",
+    "location": "Harmony Hub",
+    "description": "Learn the latest in technology with all the assignment at Durham college! Make sure you complete them!"
+  }
+
+
+]

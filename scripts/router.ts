@@ -7,12 +7,12 @@ namespace core {
         private _activeLink: string;
 
         private _routingTable: string[];
-        private _linkData:string;
+        private _linkData: string;
 
         constructor() {
             this._activeLink = "";
             this._routingTable = [];
-            this._linkData="";
+            this._linkData = "";
         }
 
         public get LinkData(): string {
@@ -22,6 +22,7 @@ namespace core {
         public set LinkData(link: string) {
             this._linkData = link;
         }
+
         public get ActiveLink(): string {
             return this._activeLink;
         }
@@ -35,7 +36,6 @@ namespace core {
          * @param route
          * @return{void}
          */
-
         public Add(route: string): void {
             this._routingTable.push(route);
         }
@@ -45,7 +45,6 @@ namespace core {
          * @param routingTable
          * return {void}
          */
-
         public AddTable(routingTable: string[]): void {
             this._routingTable = routingTable;
         }
@@ -55,7 +54,6 @@ namespace core {
          * @param route
          * @returns {*}
          */
-
         public Find(route: string): number {
             return this._routingTable.indexOf(route);
         }
@@ -65,7 +63,6 @@ namespace core {
          * @param route
          * @returns {boolean}
          */
-
         public Remove(route: string): boolean {
             if (this.Find(route) > -1) {
                 this._routingTable.splice(this.Find(route), 1);
@@ -91,19 +88,24 @@ let router: core.Router = new core.Router()
 router.AddTable([
     "/",
     "/home",
-    "/about",
-    "/products",
+    "/portfolio",
     "/services",
+    "/team",
+    "/blog",
+    "/events",
+    "/events-planning",
+    "/gallery",
+    "/privacy-policy",
+    "/terms",
     "/contact",
-    "/contact-list",
     "/login",
     "/register",
-    "/edit",
-
+    "/statistics",
+    "/404",
 ]);
 
-let route:string = location.pathname;
+let route: string = location.pathname;
 
 router.ActiveLink = (router.Find(route) > -1)
-                    ? ((route === "/")) ? "home" : route.substring(1)
-                    : ("404");
+    ? ((route === "/")) ? "home" : route.substring(1)
+    : ("404");

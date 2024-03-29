@@ -1,78 +1,53 @@
 "use strict";
 
-namespace  core{
-    export class Contact{
+/**
+ * Contact class for the contact form
+ */
+class Contact {
 
-        private _fullName: string;
-
-        private _contactNumber : string;
-
-        private _emailAddress: string;
-
-
-
-
-        constructor(fullName:string = "", contactNumber:string = "", emailAddress:string = "") {
-            this._fullName = fullName;
-            this._contactNumber = contactNumber;
-            this._emailAddress = emailAddress;
-        }
-
-        public get fullName(): string{
-            return this._fullName;
-        }
-
-        public set fullName(value:string){
-            this._fullName = value;
-        }
-
-        public get contactNumber():string {
-            return this._contactNumber;
-        }
-
-        public set contactNumber(value:string) {
-            this._contactNumber = value;
-        }
-
-        public get emailAddress():string {
-            return this._emailAddress;
-        }
-
-        public set emailAddress(value:string) {
-            this._emailAddress = value;
-        }
-
-        public toString() {
-            return ` Full Name: ${this._fullName}\n 
-                    Contact Number: ${this._contactNumber}\n 
-                    Email Address: ${this._emailAddress}`
-        }
-
-        /**
-         Serialize for writing to local Storage
-         */
-        public serialize():string|null {
-            if (this._fullName !== "" && this._contactNumber !== "" && this._emailAddress !== "") {
-                return `${this.fullName}, ${this.contactNumber}, ${this.emailAddress}`;
-            }
-            console.error(`One or more of the contact properties is missing`);
-            return null;
-        }
-
-        /**
-         * Deserialize is used to read data from localStorage
-         */
-        public deserialize(data: string) {
-
-            let propertyArray = data.split(",");
-            this._fullName = propertyArray[0];
-            this._contactNumber = propertyArray[1];
-            this._emailAddress = propertyArray[2];
-
-        }
+    constructor(private readonly firstName: string, private readonly lastName: string, private readonly email: string,
+                private readonly subject:string, private readonly message: string,
+                private readonly address:string, private readonly phone:string) {
 
     }
 
+    /**
+     * Get concatenated full name
+     * @returns {string}
+     */
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+
+    /**
+     * Returns elements for modal body displaying all the objects properties
+     * @returns {Node[]}
+     */
+    toFormModalBody() {
+
+        const elements = [];
+
+        const nameParagraph = document.createElement("p");
+        nameParagraph.appendChild(
+            document.createTextNode(`Thank you for submitting your request ${this.getFullName()} for subject '${this.subject}' which contains the following message:`))
+        elements.push(nameParagraph);
+
+        const messageParagraph = document.createElement("p");
+        messageParagraph.innerHTML = `<i>${this.message}</i>`;
+        elements.push(messageParagraph);
+
+        const emailParagraph = document.createElement("p");
+        emailParagraph.innerHTML = `A response will be returned to you shortly by our staff to the email you specified, ${this.email}.`;
+        elements.push(emailParagraph);
+
+        const addressParagraph = document.createElement("p");
+        addressParagraph.innerHTML = `Address: ${this.address}`;
+        elements.push(addressParagraph);
+
+        const phoneParagraph = document.createElement("p");
+        phoneParagraph.innerHTML = `Phone: ${this.phone}`;
+        elements.push(phoneParagraph);
+
+        return elements;
+    }
 }
-
-
