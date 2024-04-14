@@ -1,0 +1,57 @@
+
+<main class="flex-shrink-0">
+    <section class="py-2 text-center container">
+        <div class="row py-lg-4">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Login</h1>
+                <% if(messages.length > 0) {%>
+                    <div id="messageArea" class="alert alert-danger">
+                        <%= messages %>
+                    </div>
+                <% } %>
+
+                <div id="messageArea"></div>
+
+                <form id="loginForm" novalidate method="post">
+
+                    <div class="form-group mb-2">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="fa fa-user">
+                            </i>
+                          </span>
+                            <input type="text" class="form-control" id="username" name="username" required
+                                   value="" placeholder="Enter your username">
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="fa fa-lock">
+                            </i>
+                          </span>
+                            <input type="password" class="form-control" id="password" name="password" required
+                                   value="" placeholder="Enter your password">
+                        </div>
+
+                    </div>
+
+                    <div class="text-end">
+                        <button id="loginButton" type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                        <button id="cancelButton" type="cancel" class="btn btn-warning btn-lg">
+                            <i class="fas fa-undo"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+                <!-- Login Feedback -->
+                <p id="login-feedback" class="text-danger"></p>
+
+                <!-- Registration Link -->
+                <a href="/register" id="register-link" class="btn btn-link">Register</a>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,63 @@
+<!--content-->
+<main class="flex-shrink-0">
+
+    <section class="py-2 text-center container">
+        <div class="row py-lg-4">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Read more <span class="text-body-secondary">about our events.</span></h1>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="mx-auto col-10" id="events-posts-container">
+            <!-- Content here -->
+            <% if(events && events.length > 0) { %>
+                <% events.forEach(event => { %>
+                    <div class="events-post">
+                        <h2 class="display-5 link-body-emphasis mb-1"><%= event.title %></h2>
+                        <p class="events-post-meta"><%= event.date %> at <%= event.time %></p>
+                        <p class="event-description"><%= event.description %></p>
+                        <button class="btn btn-primary" onclick="editEvent('<%= event._id %>')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteEvent('<%= event._id %>')">Delete</button>
+                        <hr>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No events found.</p>
+            <% } %>
+        </div>
+    </div>
+</main>
+
+<script>
+    function editEvent(eventId) {
+        // Add logic to open a form for editing the event
+        // You can use modal or redirect to another page for editing
+        console.log('Editing event with ID:', eventId);
+    }
+
+    function deleteEvent(eventId) {
+        // Add logic to delete the event
+        // You may want to show a confirmation dialog before deleting
+        console.log('Deleting event with ID:', eventId);
+        // Send a request to your server to delete the event
+        fetch(`/events/${eventId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if(response.ok) {
+                    // Reload the page or update the events list
+                    window.location.reload();
+                } else {
+                    // Handle error
+                    console.error('Error deleting event:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting event:', error);
+            });
+    }
+</script>
+
+
+

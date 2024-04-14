@@ -1,0 +1,55 @@
+<!-- statistics.ejs -->
+<canvas id="statistics-chart" width="400" height="400"></canvas>
+
+<script>
+    function DisplayStatisticsPage() {
+        console.log("Called DisplayStatisticsPage()");
+
+        // Fetch statistical data from JSON file or external API
+        fetch('./data/statistics.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+
+                // Process data as needed
+                const labels = data.labels;
+                const values = data.values;
+
+                // Create Chart.js chart
+                const ctx = document.getElementById('statistics-chart');
+                if (ctx) {
+                    console.log(ctx)
+                    const chart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Statistics',
+                                data: values,
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching statistical data:', error);
+            });
+    }
+
+    // Call the function when the page loads
+    DisplayStatisticsPage();
+</script>
+
+

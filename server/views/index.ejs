@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Fathima Bukharif & Inguer Lara">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="chart.js/dist/Chart.min.css">
+    <link rel="stylesheet" href="content/app.css">
+</head>
+<body class="d-flex flex-column h-100">
+<div class="container" id="header-container">
+    <%- include('./components/header') %>
+</div>
+
+<!--content-->
+<main class="container" id="main-container">
+    <%- include('./content/' + page)%>
+</main>
+
+<!--footer-->
+<footer class="container" id="footer-container">
+    <%- include('./components/footer') %>
+</footer>
+
+
+<!--scripts-->
+<script src="jquery/dist/jquery.min.js"></script>
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="chart.js/dist/Chart.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/gallery.js"></script>
+<script src="scripts/project.js"></script>
+<script src="scripts/router.js"></script>
+
+</body>
+</html>
